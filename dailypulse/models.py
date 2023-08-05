@@ -46,6 +46,7 @@ class Reading_later(models.Model):
 # news with comment
 class News(models.Model):
     # new_id created by default as primary key
+    user = models.ForeignKey( get_user_model(), on_delete=models.CASCADE, null=False, blank=False)
     source = models.TextField(default="", null=True, blank=True)
     author = models.TextField(default="", null=True, blank=True)
     title = models.TextField(default="", null=True, blank=True)
