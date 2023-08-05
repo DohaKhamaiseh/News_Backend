@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 
 class Dailypulse(models.Model):
@@ -22,17 +23,25 @@ class Dailypulse(models.Model):
 #
 
 # news with comment
+class News(models.Model):
+    # new_id created by default as primary key
+    source = models.TextField(default="", null=True, blank=True)
+    author = models.TextField(default="", null=True, blank=True)
+    title = models.TextField(default="", null=True, blank=True)
+    description = models.TextField(default="", null=True, blank=True)
+    url = models.URLField(default="",null=True, blank=True)
+    url_image = models.URLField(default="",null=True, blank=True)
+    published_date = models.DateField(default='1996-07-30')
+    content = models.TextField(default="", null=True, blank=True)
+    def __str__(self):
+        return self.title
 
-class New(models.Model):
-    pass
 
 # comments foreign key id news post foreign key user
 class Comment(models.Model):
-
     # comment_id by default when django creating the model and its a primary key
-
     user = models.ForeignKey( get_user_model(), on_delete=models.CASCADE, null=False, blank=False)
-    news = models.ForeignKey(New,on_delete=models.CASCADE, null=True, blank=True)
+    news = models.ForeignKey(News,on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField(default="", null=True, blank=True)
 
     def __str__(self):
