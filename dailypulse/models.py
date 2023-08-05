@@ -26,7 +26,11 @@ class Reading_later(models.Model):
     title = models.CharField(max_length=256)
     url = models.CharField(max_length=256)
     id = models.AutoField(primary_key=True)
-    reviewer = models.ForeignKey(
+    source = models.TextField(default="", null=True, blank=True)
+    author = models.TextField(default="", null=True, blank=True)
+    url_image = models.URLField(default="",null=True, blank=True)
+    published_date = models.DateField(default='1996-07-30')
+    user = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, null=True, blank=True
     )
     description = models.TextField(default="", null=True, blank=True)
