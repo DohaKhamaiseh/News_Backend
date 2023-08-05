@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Dailypulse, Comment , News
+from .models import Dailypulse,Reading_later, Comment , News
 
 
 class DailypulseSerializer(serializers.ModelSerializer):
@@ -7,6 +7,9 @@ class DailypulseSerializer(serializers.ModelSerializer):
         model = Dailypulse
         fields = "__all__"
 
+class ReadingLaterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reading_later
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
