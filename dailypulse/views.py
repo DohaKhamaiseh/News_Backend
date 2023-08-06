@@ -11,6 +11,7 @@ from .permissions import IsOwnerOrReadOnly
 from .serializers import DailypulseSerializer
 
 
+
 class DailypulseList(ListCreateAPIView):
     queryset = Dailypulse.objects.all()
     serializer_class = DailypulseSerializer

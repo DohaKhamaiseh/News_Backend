@@ -11,7 +11,6 @@ class ReadingLaterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reading_later
         fields = "__all__"
-
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
