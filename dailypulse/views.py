@@ -1,6 +1,7 @@
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
+    ListAPIView,
 )
 from .models import Dailypulse , Reading_later
 from .permissions import IsOwnerOrReadOnly
@@ -56,11 +57,10 @@ class DeleteReadingList(RetrieveUpdateDestroyAPIView):
     queryset = Reading_later.objects.all()
     serializer_class = ReadingLaterSerializer
 
-class GetReadingList(ListCreateAPIView):
+class GetReadingList(ListAPIView):
     '''
     get reading list : requiring user id in url
     '''
     queryset = Reading_later.objects.all()
     serializer_class = ReadingLaterSerializer
 
-    
