@@ -2,9 +2,9 @@ from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
-from .models import Dailypulse
+from .models import Dailypulse , Reading_later
 from .permissions import IsOwnerOrReadOnly
-from .serializers import DailypulseSerializer
+from .serializers import DailypulseSerializer , ReadingLaterSerializer
 
 
 class DailypulseList(ListCreateAPIView):
@@ -40,3 +40,27 @@ class DailypulseDetail(RetrieveUpdateDestroyAPIView):
 
 # get USER info : user id url
 # update USER : user id url , body attributes all
+
+class CreateReadingList(ListCreateAPIView):
+    '''
+    create reading list : body attributes  all exepet id
+    '''
+    queryset = Reading_later.objects.all()
+    serializer_class = ReadingLaterSerializer
+
+class DeleteReadingList(RetrieveUpdateDestroyAPIView):
+    '''
+    delete reading list : requeiring id in url
+    '''
+    permission_classes = (IsOwnerOrReadOnly,)
+    queryset = Reading_later.objects.all()
+    serializer_class = ReadingLaterSerializer
+
+class GetReadingList(ListCreateAPIView):
+    '''
+    get reading list : requiring user id in url
+    '''
+    queryset = Reading_later.objects.all()
+    serializer_class = ReadingLaterSerializer
+
+    
