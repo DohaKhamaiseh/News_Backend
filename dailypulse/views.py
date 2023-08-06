@@ -2,9 +2,11 @@ from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
-from .models import Dailypulse
+from .models import Dailypulse,News
 from .permissions import IsOwnerOrReadOnly
-from .serializers import DailypulseSerializer
+from .serializers import DailypulseSerializer,NewsSerializer
+import json
+from django.http import JsonResponse
 
 
 class DailypulseList(ListCreateAPIView):
@@ -29,6 +31,23 @@ class DailypulseDetail(RetrieveUpdateDestroyAPIView):
 # update comment : comment id url ,body description
 
 # create News : body attributes all
+def Create_News(request):
+    res = json.loads(request.body)
+    new = News.objects.create(
+        source=res['source'],
+      author=res['author'],
+      title=res['title'],
+      description=res['description'],
+      url = res['url'],
+      url_image = res['url_image'],
+      published_date = res['published_date'],
+      content = res['content']
+    )
+    # user.set_password(res['password1'])
+    # new.save()
+    return JsonResponse(list(new),safe=False)
+
+
 # get news : requering user id in url
 # delete news : requeiring news id
 
