@@ -123,3 +123,4 @@ static/CACHE/
 
 # poetry
 poetry.lock
+.vercel
