@@ -22,6 +22,10 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/dailypulse/", include("dailypulse.urls")),
+    path("api/v1/dailypulse/", include("dailypulse.urls_readinglist")),
+    path("api/v1/dailypulse/", include("dailypulse.urls_comment")),
+    path("api/v1/dailypulse/", include("dailypulse.urls_news")),
+    path("api/v1/dailypulse/", include("dailypulse.urls_api")),
     path("api-auth/", include("rest_framework.urls")),
     path(
         "api/token/",
