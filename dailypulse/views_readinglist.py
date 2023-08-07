@@ -6,12 +6,14 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView
 
 )
+from rest_framework.permissions import IsAuthenticated
 from .models import  Reading_later
 from .permissions import IsOwnerOrReadOnly
 from .serializers import ReadingLaterSerializer
 
 
 class CreateReadingList(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     '''
     create reading list : body attributes  all exepet id
     '''
@@ -19,6 +21,7 @@ class CreateReadingList(ListCreateAPIView):
     serializer_class = ReadingLaterSerializer
 
 class DeleteReadingList(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     '''
     delete reading list : requeiring id in url
     '''
@@ -27,6 +30,7 @@ class DeleteReadingList(RetrieveUpdateDestroyAPIView):
     serializer_class = ReadingLaterSerializer
 
 class GetReadingList(ListAPIView):
+    permission_classes = [IsAuthenticated]
     '''
     get reading list : requiring user id in url
     '''
