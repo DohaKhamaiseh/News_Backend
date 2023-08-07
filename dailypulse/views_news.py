@@ -7,7 +7,7 @@ from rest_framework.generics import (
     DestroyAPIView
 
 )
-
+from rest_framework.permissions import IsAuthenticated
 from .models import News
 from .permissions import IsOwnerOrReadOnly
 from .serializers import NewsSerializer
@@ -17,11 +17,13 @@ import json
 
 # create News : body attributes all
 class CreateNewsList(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = News.objects.all()
     serializer_class = NewsSerializer
 
 # get news : requering user id in url
 class GetNewsList(ListAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = NewsSerializer
     def get_queryset(self):
         user_id = self.kwargs['user_id']
@@ -29,7 +31,7 @@ class GetNewsList(ListAPIView):
 
 # delete news : requeiring news id
 class DeleteNews(DestroyAPIView):
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     def destroy(self, request, *args, **kwargs):
