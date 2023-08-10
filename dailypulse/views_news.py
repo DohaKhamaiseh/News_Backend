@@ -42,3 +42,7 @@ class DeleteNews(DestroyAPIView):
         serializer = self.get_serializer(remaining_data, many=True)
 
         return Response(serializer.data)
+
+class GetNewsAllList(ListCreateAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
