@@ -28,7 +28,7 @@ class Reading_later(models.Model):
     id = models.AutoField(primary_key=True)
     source = models.TextField(default="", null=True, blank=True)
     author = models.TextField(default="", null=True, blank=True)
-    url_image = models.URLField(default="",null=True, blank=True)
+    url_image = models.TextField(default="",null=True, blank=True)
     published_date = models.DateField(default='1996-07-30')
     user = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, null=True, blank=True
@@ -46,13 +46,13 @@ class Reading_later(models.Model):
 # news with comment
 class News(models.Model):
     # new_id created by default as primary key
-    user = models.ForeignKey( get_user_model(), on_delete=models.CASCADE, null=False, blank=False)
+    user = models.ForeignKey( get_user_model(), on_delete=models.CASCADE, null=True, blank=False)
     source = models.TextField(default="", null=True, blank=True)
     author = models.TextField(default="", null=True, blank=True)
     title = models.TextField(default="", null=True, blank=True)
     description = models.TextField(default="", null=True, blank=True)
-    url = models.URLField(default="",null=True, blank=True)
-    url_image = models.URLField(default="",null=True, blank=True)
+    url = models.TextField(default="",null=True, blank=True)
+    url_image = models.TextField(default="",null=True, blank=True )
     published_date = models.DateField(default='1996-07-30')
     content = models.TextField(default="", null=True, blank=True)
     def __str__(self):
@@ -62,7 +62,7 @@ class News(models.Model):
 # comments foreign key id news post foreign key user
 class Comment(models.Model):
     # comment_id by default when django creating the model and its a primary key
-    user = models.ForeignKey( get_user_model(), on_delete=models.CASCADE, null=False, blank=False)
+    user = models.ForeignKey( get_user_model(), on_delete=models.CASCADE, null=True, blank=False)
     news = models.ForeignKey(News,on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField(default="", null=True, blank=True)
 
