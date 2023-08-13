@@ -39,8 +39,8 @@ class Get_comment_news(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = CommentSerializer
     def get_queryset(self):
-        news_id = self.kwargs['news_id']
-        return Comment.objects.filter(news_id=news_id)
+        title = self.kwargs['title']
+        return Comment.objects.filter(newsTitle=title)
 
 class Get_comment_user(ListAPIView):
     permission_classes = [IsAuthenticated]

@@ -64,6 +64,8 @@ class Comment(models.Model):
     # comment_id by default when django creating the model and its a primary key
     user = models.ForeignKey( get_user_model(), on_delete=models.CASCADE, null=True, blank=False)
     news = models.ForeignKey(News,on_delete=models.CASCADE, null=True, blank=True)
+    newsTitle = models.TextField(default="", null=True, blank=True)
+    userName = models.TextField(default="", null=True, blank=True)
     description = models.TextField(default="", null=True, blank=True)
 
     def __str__(self):
