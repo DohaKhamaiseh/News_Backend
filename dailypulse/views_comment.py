@@ -48,7 +48,7 @@ class Get_comment_user(ListAPIView):
     def get_queryset(self):
         user_id = self.kwargs['user_id']
         news_id = self.kwargs['news_id']
-        return Comment.objects.filter(user_id=user_id and news_id == news_id)
+        return Comment.objects.filter(user_id=user_id , news_id =news_id)
 
 class Update_comment(UpdateAPIView):
     permission_classes = [IsOwnerOrReadOnly, IsAuthenticated]
