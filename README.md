@@ -8,9 +8,10 @@ This web appliction collect the news from the most famous newspaper and websites
 
 ## [Click to see Daily Pulse ^_^](https://drive.google.com/file/d/1VFYObyzteaWEyI00dNiIrwUtOP0pAKES/view)
 
+## [Frontend Repo](https://github.com/DohaKhamaiseh/News_Frontend)
 
 ## WireFrame :
 
 ![Wieframe](./wireframe.jpg)
 
-## [Frontend Repo]()
+
